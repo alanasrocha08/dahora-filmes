@@ -4,11 +4,11 @@
     "slug": "dahora-filmes",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icone.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash-dahora.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
