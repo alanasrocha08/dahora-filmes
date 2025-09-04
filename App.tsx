@@ -29,7 +29,7 @@ export default function App() {
         </View>
         <View style={estilos.viewBotoes}>
           <Pressable style={estilos.botaoInicial}>
-            <Ionicons name="search" size={24} color="black" />
+            <Ionicons name="search" size={24} color="white" />
             <Text style={estilos.textoBotao}>Buscar Filmes</Text>
           </Pressable>
 
@@ -78,6 +78,7 @@ const estilos = StyleSheet.create({
     backgroundColor: "#5451a6",
     padding: 16,
     borderRadius: 8,
+    flexDirection: "row",
   },
   textoBotao: {
     color: "white",
