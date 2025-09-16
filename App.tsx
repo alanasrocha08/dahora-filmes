@@ -13,7 +13,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 // Importando a biblioteca interna vector-icons
 import { Ionicons } from "@expo/vector-icons";
-import Loading from "./src/components/loading";
+import Loading from "./src/components/Loading";
 
 export default function App() {
   /* Usamos o useFonts para criar uma referência para 
