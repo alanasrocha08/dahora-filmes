@@ -1,22 +1,30 @@
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
-import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Button,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-// Importando a biblioteca interna vextor-icons
+// Importando a biblioteca interna vector-icons
 import { Ionicons } from "@expo/vector-icons";
+import Loading from "./src/components/loading";
 
 export default function App() {
-  /* Usamos o useFonts para criar uma refe^rncia para a fonte que queremos utilizar no app. */
-  const [fonteCarregar] = useFonts({
+  /* Usamos o useFonts para criar uma referência para 
+  a fonte que queremos utilizar no app. */
+  const [fonteCarregada] = useFonts({
     Monoton: require("./assets/fonts/Monoton-Regular.ttf"),
   });
 
   // Se a fonte ainda não foi carregada
-  if (!fonteCarregar) {
-    return (
-      <Text style={{ color: "red", fontSize: 22 }}> Carregando fontr...</Text>
-    );
+  if (!fonteCarregada) {
+    return <Loading />;
   }
 
   return (
@@ -25,19 +33,27 @@ export default function App() {
         <StatusBar style="auto" />
         <View style={estilos.viewLogo}>
           <Image source={require("./assets/dahora.png")} style={estilos.logo} />
-          <Text style={estilos.tituloApp}>Dá Hora Filmes!</Text>
+          <Text style={estilos.tituloApp}>Dá Hora Filmes</Text>
         </View>
         <View style={estilos.viewBotoes}>
           <Pressable style={estilos.botaoInicial}>
-            <Ionicons name="search" size={24} color="white" />
-            <Text style={estilos.textoBotao}>Buscar Filmes</Text>
+            <Ionicons name="search" size={18} color="white" />
+            <Text style={estilos.textoBotao}> Buscar Filmes</Text>
           </Pressable>
-
-          <Button title="Favoritos" />
+          <Pressable style={estilos.botaoInicial}>
+            <Ionicons name="star" size={18} color="gold" />
+            <Text style={estilos.textoBotao}> Favoritos</Text>
+          </Pressable>
         </View>
         <View style={estilos.viewRodape}>
-          <Button title="Privacidade" />
-          <Button title="Sobre" />
+          <Pressable style={estilos.botaoRodape}>
+            <Ionicons name="lock-closed" size={18} color="white" />
+            <Text style={estilos.textoBotao}> Privacidade</Text>
+          </Pressable>
+          <Pressable style={estilos.botaoRodape}>
+            <Ionicons name="information-circle" size={18} color="white" />
+            <Text style={estilos.textoBotao}> Sobre</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -47,14 +63,13 @@ export default function App() {
 /* Estilos */
 const estilos = StyleSheet.create({
   container: {
-    backgroundColor: "fff",
+    backgroundColor: "#fff",
     paddingHorizontal: 20,
     flex: 1,
     justifyContent: "center",
   },
   viewLogo: {
-    backgroundColor: "pink",
-    flex: 2,
+    flex: 3,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -68,26 +83,32 @@ const estilos = StyleSheet.create({
     fontFamily: "Monoton",
   },
   viewBotoes: {
-    backgroundColor: "lightgreen",
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   botaoInicial: {
     backgroundColor: "#5451a6",
     padding: 16,
     borderRadius: 8,
     flexDirection: "row",
+    alignItems: "center",
   },
   textoBotao: {
     color: "white",
   },
   viewRodape: {
-    backgroundColor: "lightyellow",
+    backgroundColor: "#5451a6",
     flex: 0.5,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: 8,
+  },
+  botaoRodape: {
+    padding: 16,
+    flexDirection: "row",
     alignItems: "center",
   },
 });
