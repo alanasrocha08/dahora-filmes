@@ -8,7 +8,7 @@ import { Link, Stack } from "expo-router";
 export default function Home() {
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
+      <Stack.Screen options={{ headerShown: false, headerTitle: "Home" }} />
       <SafeAreaView style={estilos.container}>
         <StatusBar style="auto" />
         <View style={estilos.viewLogo}>
