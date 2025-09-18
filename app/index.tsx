@@ -1,9 +1,10 @@
 import { View, Text } from "react-native";
+import React from "react";
 
-export default function Layout() {
+export default function Home() {
   return (
     <View>
-      <Text>_layout</Text>
+      <Text>index</Text>
     </View>
   );
 }

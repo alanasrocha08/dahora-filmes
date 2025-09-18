@@ -12,6 +12,8 @@ import {
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 // Importando a biblioteca interna vector-icons
+/* Usamos o @ts-ignore para ignorar os erros de tipagem (ou ausência de tipagem) */
+// @ts-ignore
 import { Ionicons } from "@expo/vector-icons";
 import Loading from "./src/components/Loading";
 
