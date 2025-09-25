@@ -1,5 +1,5 @@
 // app/resultados.tsx
-import { StyleSheet, Text, FlatList } from "react-native";
+import { FlatList, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { Filme, ParametrosBusca } from "@/src/types";
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/src/services/api";
 import Loading from "@/src/components/Loading";
 import CardFilme from "@/src/components/Cardfilme";
+import ItemVazio from "@/src/components/Itemvazio";
 
 export default function Resultados() {
   const { filme } = useLocalSearchParams<ParametrosBusca>();
@@ -62,9 +63,7 @@ export default function Resultados() {
             numColumns={2}
             columnWrapperStyle={estilos.coluna}
             showsVerticalScrollIndicator={false}
-            ListEmptyComponent={
-              <Text key="empty">Nenhum filme encontrado! </Text>
-            }
+            ListEmptyComponent={ItemVazio}
           />
         )}
       </SafeAreaView>
