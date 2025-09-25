@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import { Text, StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function privacidade() {
+export default function Privacidade() {
   return (
     <>
       <Stack.Screen

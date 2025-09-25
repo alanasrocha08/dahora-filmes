@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Sobre() {
@@ -28,6 +28,7 @@ export default function Sobre() {
     </>
   );
 }
+
 const estilos = StyleSheet.create({
   container: {
     flex: 1,

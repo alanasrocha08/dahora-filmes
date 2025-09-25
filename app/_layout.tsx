@@ -1,14 +1,14 @@
 import { useFonts } from "expo-font";
-import { View, Text, StatusBar } from "react-native";
 import Loading from "../src/components/Loading";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-
 import { Stack } from "expo-router";
+import { StatusBar } from "react-native";
 
 export default function Layout() {
   const [fonteCarregada] = useFonts({
     Monoton: require("../assets/fonts/Monoton-Regular.ttf"),
   });
+
   if (!fonteCarregada) {
     return <Loading />;
   }
@@ -29,10 +29,5 @@ export default function Layout() {
         }}
       />
     </SafeAreaProvider>
-  );
-  return (
-    <View>
-      <Text>_layout</Text>
-    </View>
   );
 }
