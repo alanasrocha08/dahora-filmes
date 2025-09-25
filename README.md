@@ -2,6 +2,18 @@
 
 Aplicativo desenvolvido utilizando React Native com Expo.
 
+## 06_finalizacao-doresultados-e-componentes-adicionais
+
+- Definindo alias/apelido para os caminhos (tsconfig.json)
+- Adição de states para resultados da busca por filmes e controle do loading
+- Uso fo compinente nativo `<Flatlist` para listas de dados dinâmicos
+- Ajuste do Flatlist para renderização de componente `<ItemVazio` caso não tenha resultados na busca de filme
+- Ajuste do layout do Flatlist para modo de 2 colunas (grid)
+- Adição de imagem do filme e imagem alternativa em CardFilme
+- Adição de créditos ao TMDB na tela Sobre
+
+---
+
 ## 05_uso-da-api-com-config-env
 
 - Cadastro no TheMovieDB para obter a API Key
