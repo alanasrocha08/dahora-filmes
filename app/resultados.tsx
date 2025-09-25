@@ -59,7 +59,12 @@ export default function Resultados() {
             data={resultados}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => <CardFilme filme={item} />}
-            ListEmptyComponent={<Text>Nenhum filme encontrado!</Text>}
+            numColumns={2}
+            columnWrapperStyle={estilos.coluna}
+            showsVerticalScrollIndicator={false}
+            ListEmptyComponent={
+              <Text key="empty">Nenhum filme encontrado! </Text>
+            }
           />
         )}
       </SafeAreaView>
