@@ -5,8 +5,13 @@ import { Stack } from "expo-router";
 
 // @ts-ignore
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import { Filme } from "@/src/types";
 
 export default function Favoritos() {
+  const [favoritos, setFavoritos] = useState<Filme[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const itemDaListaDeFavoritos = () => (
     <Pressable style={estilos.item}>
       <Text style={estilos.titulo}>Titulo...</Text>
