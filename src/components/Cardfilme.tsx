@@ -5,15 +5,15 @@ import {
   View,
   Pressable,
   Image,
-  Vibration,
   Alert,
+  Vibration,
 } from "react-native";
 
 // @ts-ignore
 import { Ionicons } from "@expo/vector-icons";
 import { CardFilmeProps } from "../types";
 import { useRouter } from "expo-router";
-import { salvarFilmeFavorito } from "../services/storag-favoritos";
+import { salvarFilmeFavorito } from "../services/storage-favoritos";
 
 export default function CardFilme({ filme }: CardFilmeProps) {
   // Extraindo cada prop de dentro do filme
@@ -37,14 +37,14 @@ export default function CardFilme({ filme }: CardFilmeProps) {
     salvarFilmeFavorito(filme)
       .then((salvou) => {
         if (salvou) {
-          Alert.alert("Favoritos", "Filme salvo com suceso!");
+          Alert.alert("Favoritos", "Filme salvo com sucesso!");
         } else {
           Alert.alert("Favoritos", "Filme já está nos favoritos!");
           Vibration.vibrate();
         }
       })
       .catch(() => {
-        Alert.alert("Ops", "Erro ao salvar. Tente novamnete");
+        Alert.alert("Ops", "Erro ao salvar. Tente novamente");
         Vibration.vibrate(1000);
       });
   };

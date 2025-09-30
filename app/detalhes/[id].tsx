@@ -1,17 +1,17 @@
 // app/detalhes/[id].tsx
 import { FilmeDetalhes, ParametrosDetalhes } from "@/src/types";
-import { formatarData } from "@/src/types/utils";
+import { formatarData } from "@/src/utils";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Detalhes() {
   // Capturando os dados do filme completo via params e em formato de string/json
+  // Colocamos o alias/apelido como filmeString
   const { filme: filmeString } = useLocalSearchParams<ParametrosDetalhes>();
 
-  // Conertendo a string do filme para um objeto
+  // Convertendo a string do filme para um objeto
   const filme: FilmeDetalhes = JSON.parse(filmeString);
-  console.log(filme.title);
 
   return (
     <>
@@ -45,9 +45,9 @@ export default function Detalhes() {
                 📅 {formatarData(filme.release_date)}
               </Text>
             </View>
-            <Text style={estilos.sinopseTitulo}></Text>
+            <Text style={estilos.sinopseTitulo}>Sinopse:</Text>
             <Text style={estilos.sinopse}>
-              {filme.overview || "Não diponível"}
+              {filme.overview || "Não disponível"}
             </Text>
           </View>
         </ScrollView>
@@ -75,7 +75,7 @@ const estilos = StyleSheet.create({
   imagem: {
     width: "100%",
     height: "100%",
-    resizeMode: "cover", // adicione o modo de redicionamento
+    resizeMode: "cover", // adicione o modo de redimensionamento
   },
   corpo: {
     padding: 16,

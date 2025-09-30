@@ -2,23 +2,26 @@
 
 Aplicativo desenvolvido utilizando React Native com Expo.
 
+---
+
 ## 07_detalhes-do-filme
 
 - Criação de rota dinâmica: `app/detalhes/[id].tsx`
 - Adiciona os dados do filme como string para o parâmetro da rota de detalhes
-- Em Detalhes, capture o filme como string e converte para objeto
+- Em Detalhes, captura o filme como string e converte para objeto
 - Exibe os dados do filme nos componentes
 - Formata a data e ajusta lógica para exibir "Não disponível" quando não tiver data e sinopse
 
 ---
 
-## 06_finalizacao-doresultados-e-componentes-adicionais
+## 06_finalizacao-do-resultados-e-componentes-adicionais
 
 - Definindo alias/apelido para os caminhos (tsconfig.json)
 - Adição de states para resultados da busca por filmes e controle do loading
-- Uso fo compinente nativo `<Flatlist` para listas de dados dinâmicos
-- Ajuste do Flatlist para renderização de componente `<ItemVazio` caso não tenha resultados na busca de filme
-- Ajuste do layout do Flatlist para modo de 2 colunas (grid)
+- Uso do componente nativo `<FlatList>` para listas de dados dinâmicos
+- Ajuste do FlatList para renderização de componente `<CardFilme>` com dados de cada filme
+- Ajuste do FlatList para renderização de componente `<ItemVazio>` caso não tenha resultados na busca de filme
+- Ajuste do layout do FlatLista para modo de 2 colunas (grid)
 - Adição de imagem do filme e imagem alternativa em CardFilme
 - Adição de créditos ao TMDB na tela Sobre
 
