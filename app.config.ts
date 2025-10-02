@@ -5,9 +5,9 @@ import { ExpoConfig, ConfigContext } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "DáHora Filmes",
-  slug: "dahora-filmes",
-  owner: "tiagotecinternet", // Necessário para o EAS
+  name: "DáHora Filme",
+  slug: "dahora-filme",
+  owner: "alanasrocha", // Necessário para o EAS
   scheme: "dahora",
   version: "1.1.0",
   orientation: "portrait",
@@ -29,7 +29,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#000000",
     },
     edgeToEdgeEnabled: true,
-    package: "com.tiagohub.dahorafilmes",
+    package: "com.alanasrocha.dahorafilmes",
   },
   plugins: ["expo-font", "expo-router"],
   // Acessando a API_KEY através do dotenv e guardando na chave apiKey
