@@ -1,103 +1,96 @@
-import { Stack } from "expo-router";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+// app/resultados.tsx
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import { Stack, useLocalSearchParams } from "expo-router";
+import { Filme, ParametrosBusca } from "@/src/types";
+import { useEffect, useState } from "react";
+import { api } from "@/src/services/api";
+import Loading from "@/src/components/Loading";
+import CardFilme from "@/src/components/CardFilme";
+import ItemVazio from "@/src/components/ItemVazio";
 
-export default function Sobre() {
+export default function Resultados() {
+  const { filme } = useLocalSearchParams<ParametrosBusca>();
+
+  // Criando um state para gerenciar a lista de filmes obtida da API
+  const [resultados, setResultados] = useState<Filme[]>([]);
+
+  // Criando um state para alternar a exibição de um Loading
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!filme) return;
+
+    // Ao começar as ações de busca na API, iniciamos o loading
+    setLoading(true);
+
+    api
+      .get("/search/movie", {
+        params: {
+          language: "pt-BR",
+          query: filme,
+          include_adult: false,
+        },
+      })
+      .then((resposta) => setResultados(resposta.data.results))
+      .catch((err) => console.error(err))
+
+      // Acabou o processo de busca? Mesmo com sucesso ou erro?
+      // Então, finalmente, desative o loading
+      .finally(() => setLoading(false));
+  }, [filme]);
+
   return (
     <>
-      <Stack.Screen options={{ headerTitle: "Sobre o App" }} />
-      <SafeAreaView style={estilos.container}>
-        <ScrollView>
-          <View style={estilos.card}>
-            <Image
-              source={require("../assets/dahora.png")}
-              style={estilos.logo}
-            />
-            <Text style={estilos.titulo}>Dá Hora Filmes!</Text>
-            <Text style={estilos.subtitulo}>Versão 1.0.0</Text>
-            <Text style={estilos.paragrafo}>
-              O Dá Hora Filmes! é um aplicativo para você buscar, descobrir e
-              salvar seus filmes favoritos. Mantenha-se atualizado sobre o mundo
-              do cinema de forma rápida e intuitiva.
-            </Text>
-          </View>
+      <Stack.Screen
+        options={{
+          headerTitle: `Resultados`,
+        }}
+      />
 
-          <View style={estilos.card}>
-            <Image
-              source={require("@/assets/logo-tmdb.png")}
-              style={estilos.logo}
-            />
+      <View style={estilos.container}>
+        <Text style={estilos.texto}>
+          Você buscou por: <Text style={estilos.termo}>{filme}</Text>
+        </Text>
 
-            <Text style={estilos.subtitulo}>The Movie Database (TMDb)</Text>
-
-            <Text style={estilos.paragrafo}>
-              As informações sobre os filmes são coletadas e atualizadas a
-              partir da base de dados pública disponibilizada pelo site The
-              Movie Database
-            </Text>
-          </View>
-
-          <View style={estilos.rodape}>
-            <Text style={estilos.textoRodape}>
-              Desenvolvido por DAHORA-2025.
-            </Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+        {loading ? (
+          <Loading />
+        ) : (
+          <FlatList
+            data={resultados}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => <CardFilme filme={item} />}
+            numColumns={2}
+            columnWrapperStyle={estilos.coluna}
+            showsVerticalScrollIndicator={false}
+            ListEmptyComponent={ItemVazio}
+          />
+        )}
+      </View>
     </>
   );
 }
 
 const estilos = StyleSheet.create({
+  viewFilmes: {
+    marginVertical: 8,
+  },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f5f5f5",
-    padding: 20,
-  },
-  card: {
-    marginBottom: 10,
+    paddingHorizontal: 16,
     backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 20,
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    alignItems: "center",
-    width: "100%",
+    paddingBottom: 32,
   },
-  logo: {
-    width: 100,
-    height: 100,
+  coluna: {
+    justifyContent: "space-between",
     marginBottom: 10,
-    resizeMode: "contain",
   },
-  titulo: {
-    fontSize: 28,
-    fontFamily: "Monoton",
-    marginBottom: 5,
-    color: "#333",
-  },
-  subtitulo: {
+  texto: {
     fontSize: 16,
-    color: "#888",
-    marginBottom: 15,
+    marginVertical: 8,
   },
-  paragrafo: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: "#555",
-    textAlign: "center",
-  },
-  rodape: {
-    marginTop: 40,
-    alignItems: "center",
-  },
-  textoRodape: {
-    fontSize: 14,
-    color: "#aaa",
+  termo: {
+    fontWeight: "bold",
+    color: "#5451a6",
+    fontSize: 18,
   },
 });

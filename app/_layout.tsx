@@ -1,12 +1,12 @@
 import { useFonts } from "expo-font";
-import Loading from "../src/components/Loading";
+import Loading from "@/src/components/Loading";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
-import { StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 export default function Layout() {
   const [fonteCarregada] = useFonts({
-    Monoton: require("../assets/fonts/Monoton-Regular.ttf"),
+    Monoton: require("@/assets/fonts/Monoton-Regular.ttf"),
   });
 
   if (!fonteCarregada) {
@@ -15,7 +15,7 @@ export default function Layout() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle="default" backgroundColor="#5451a6" />
+      <StatusBar style="light" />
 
       <Stack
         screenOptions={{
