@@ -5,8 +5,8 @@ import { ExpoConfig, ConfigContext } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "DáHora Filmes",
-  slug: "dahora-filmes",
+  name: "DáHora Filme",
+  slug: "dahora-filme",
   owner: "alanasrocha", // Necessário para o esa
   scheme: "dahora",
   version: "1.0.0",
