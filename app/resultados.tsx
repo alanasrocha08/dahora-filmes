@@ -5,8 +5,8 @@ import { Filme, ParametrosBusca } from "@/src/types";
 import { useEffect, useState } from "react";
 import { api } from "@/src/services/api";
 import Loading from "@/src/components/Loading";
-import CardFilme from "@/src/components/CardFilme";
-import ItemVazio from "@/src/components/ItemVazio";
+import CardFilme from "@/src/components/Cardfilme";
+import ItemVazio from "@/src/components/Itemvazio";
 
 export default function Resultados() {
   const { filme } = useLocalSearchParams<ParametrosBusca>();
