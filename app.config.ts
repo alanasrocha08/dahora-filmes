@@ -7,6 +7,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "DáHora Filmes",
   slug: "dahora-filmes",
+  owner: "alanasrocha", // Necessário para o esa
   scheme: "dahora",
   version: "1.0.0",
   orientation: "portrait",
