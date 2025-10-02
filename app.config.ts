@@ -37,11 +37,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     apiKey: process.env.API_KEY,
     // Necessário para o EAS
     eas: {
-      projectId: "f271b90a-af85-404f-a725-f9f30238e71f",
+      projectId: "73ae2ee7-3956-4d1f-a5ef-467ae152c38d",
     },
   },
   updates: {
-    url: "https://u.expo.dev/f271b90a-af85-404f-a725-f9f30238e71f",
+    url: "https://u.expo.dev/73ae2ee7-3956-4d1f-a5ef-467ae152c38d",
   },
   runtimeVersion: {
     policy: "appVersion",
